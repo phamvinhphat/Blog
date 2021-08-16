@@ -1,0 +1,31 @@
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "Phatv2",
+    "password": "Phat1234",
+    "email":"Pvphat12c6ntt@gmail.com",
+    "NumberPhone":"0937175474"
+}
+
+###
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "Phatv",
+    "password": "Phat1234"
+}
+
+###
+POST http://localhost:5000/api/posts/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJI
+
+{
+        "title": "my first post3",
+        "content": "phat",
+        "author": "phatvp",
+        "url": "www.youtube.com/watch?v=rgFd17fyM4A&t=2299s",
+        "likeCount" : 1
+}
