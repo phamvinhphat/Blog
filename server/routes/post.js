@@ -96,4 +96,26 @@ try{
 
 })
 
+//@rote delete api.posts
+//@desc delete post
+//@access Private
+router.delete('/:id', verifyToken, async(req,res) =>{
+    try{
+        const postDeleteCondition = {_id: req.params.id, user: req.userId}
+        const deletedPost = await Post.findOneAndDelete(postDeleteCondition)
+        
+        if(!deletedPost)
+        return res
+            .status(401)
+            .json({success: false, message: 'Post not found or user not author'})
+        
+            res.json({
+                success: true, 
+                message:'Delete post success',post: deletedPost})
+
+    } catch(error){
+        res.status(400).json({error: err});
+    }
+})
+
 module.exports = router
