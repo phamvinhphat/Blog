@@ -4,6 +4,22 @@
 	height: 100vh;
 }
 
+.landing2 {
+	position: relative;
+	background: url('./assets/landing.jpg') no-repeat center center/cover;
+	height: 100vh;
+}
+
+.landing2-inner {
+	height: 100%;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
 .dark-overlay {
 	background-color: rgba(0, 0, 0, 0.5);
 	height: 100%;
