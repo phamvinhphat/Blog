@@ -10,6 +10,31 @@
 	height: 100vh;
 }
 
+.about {
+	position: relative;
+	background: url('./assets/about.jpg') no-repeat center center/cover;
+	height: 100vh;
+}
+
+.tools {
+	position: relative;
+	background: url('./assets/tools.jpg') no-repeat center center/cover;
+	height: 100vh;
+}
+
+.news {
+	position: relative;
+	background: url('./assets/new.jpg') no-repeat center center/cover;
+	height: 100vh;
+}
+
+.edit {
+	position: relative;
+	background: url('./assets/EditUser.jpg') no-repeat center center/cover;
+	height: 100vh;
+}
+
+
 .landing2-inner {
 	height: 100%;
 	margin: auto;
@@ -40,7 +65,6 @@
 }
 
 .landing-inner h1,
-.landing-inner h3,
 .landing-inner h4,
 .landing-inner p {
 	color: white;
