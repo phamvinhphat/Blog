@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Icon from '../assets/user.svg'
 import userIcon from '../assets/user2.svg'
 import emailIcon from '../assets/email.svg'
-
+import nameIcon from '../assets/userName.svg'
+import phoneIcon from '../assets/phone.svg'
+import addressIcon from '../assets/address.svg'
+import { AuthContext } from "../contexts/AuthContext";
 
 // react-bootstrap components
 import {
@@ -17,7 +20,12 @@ import {
   Col,
 } from "react-bootstrap";
 
+
 function User() {
+
+  const {authState: {user: {username,email,NumberPhone}}}= useContext(AuthContext)
+
+
   return (
     <>
       <Container fluid>
@@ -36,7 +44,7 @@ function User() {
                       <img src={userIcon} alt="userIcon" width='30' height='30' className='mr-2'/>
                         <label>Username</label>
                         <Form.Control
-                          defaultValue="michael23"
+                          defaultValue={username}
                           placeholder="Username"
                           type="text"
                         ></Form.Control>
@@ -50,7 +58,7 @@ function User() {
                           Email user
                         </label>
                         <Form.Control
-
+                          defaultValue={email}
                           placeholder="Email"
                          
                           type="email"
@@ -63,22 +71,26 @@ function User() {
                   <Row>
                     <Col className="pr-1" md="6">
                       <Form.Group>
+                      <img src={nameIcon} alt="nameIcon" width='30' height='30' className='mr-2'/>
                         <label>Name(BUG Don't data)</label>
                         <Form.Control
-                          defaultValue="Mikey"
-                          placeholder="Company"
+                  
+                          placeholder="Email"
                           type="text"
                         ></Form.Control>
                       </Form.Group>
                     </Col>
+
                     <Col className="pl-1" md="6">
                       <Form.Group>
+                      <img src={phoneIcon} alt="phoneIcon" width='24' height='24' className='mr-2'/>
+                     
                         <label>Number Phone</label>
                         <Form.Control
+                           defaultValue={NumberPhone}
+                       
 
-                          defaultValue="Andrew"
-
-                          placeholder="Last Name"
+                          placeholder="Number Phone"
                           type="text"
                         ></Form.Control>
                       </Form.Group>
@@ -88,9 +100,11 @@ function User() {
                   <Row>
                     <Col md="12">
                       <Form.Group>
+                      <img src={addressIcon} alt="addressIcon" width='24' height='24' className='mr-2'/>
+                   
                         <label>Address (BUG Don't Data)</label>
                         <Form.Control
-                          defaultValue="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
+                          
                           placeholder="Home Address"
                           type="text"
                         ></Form.Control>
@@ -112,35 +126,33 @@ function User() {
               </Card.Body>
             </Card>
           </Col>
+        
+        {/* --------------------------------- */}
           <Col md="4">
             <Card className="card-user">
               <div className="card-image">
                 <img
                   alt="..."
-                  src={
-                    Icon
-                      .default
-                  }
+                  src={ Icon.default }
                 ></img>
               </div>
+
               <Card.Body>
                 <div className="author">
-                  <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                    <img
-                      alt="..."
-                      className="avatar border-gray"
-                      src={Icon.default}
-                    ></img>
-                    <h5 className="title">Mike Andrew</h5>
-                  </a>
-                  <p className="description">michael24</p>
+                  <p href="#pablo" onClick={(e) => e.preventDefault()}>
+                    <img alt="..." className="avatar border-gray" src={Icon.default}></img>
+                    <h5 className="title">Name:  {username}</h5>
+                  </p>
+
+                  <p className="description">Email: {email}</p>
                 </div>
+                <br></br>
                 <p className="description text-center">
-                  "Lamborghini Mercy <br></br>
-                  Your chick she so thirsty <br></br>
-                  I'm in that two seat Lambo"
+                  "I was always flying in the direction of someone else's flight<br></br>
+                  This time I will fly the path that I have chosen " <br></br>
                 </p>
               </Card.Body>
+              
               <hr></hr>
               <div className="button-container mr-auto ml-auto">
                 <Button
@@ -151,6 +163,7 @@ function User() {
                 >
                   <i className="fab fa-facebook-square"></i>
                 </Button>
+
                 <Button
                   className="btn-simple btn-icon"
                   href="#pablo"
@@ -159,6 +172,7 @@ function User() {
                 >
                   <i className="fab fa-twitter"></i>
                 </Button>
+
                 <Button
                   className="btn-simple btn-icon"
                   href="#pablo"

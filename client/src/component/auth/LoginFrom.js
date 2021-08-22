@@ -53,7 +53,8 @@ const[alert, setAlert] = useState(null)
                value={username}
                onChange={onChangeLoginForm}
                />          
-           </Form.Group>          
+           </Form.Group>    
+           <br></br>      
            <Form.Group>
                <Form.Control 
                type='password' 
@@ -64,6 +65,7 @@ const[alert, setAlert] = useState(null)
                onChange={onChangeLoginForm}
                />
            </Form.Group>
+           <br></br>     
            <Button variant='success' type='submit'>Login</Button>
        </Form>
 

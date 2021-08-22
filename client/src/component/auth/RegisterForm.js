@@ -70,7 +70,7 @@ return(
                onChange={onChangeRegisterForm}
                />          
            </Form.Group>
-
+           <br></br>     
             {/* email */}
            <Form.Group>
                <Form.Control 
@@ -82,7 +82,7 @@ return(
                 onChange={onChangeRegisterForm}
                 />
            </Form.Group>
-
+           <br></br>     
             {/* number phone */}
            <Form.Group>
                <Form.Control 
@@ -94,7 +94,7 @@ return(
                 onChange={onChangeRegisterForm}
                 />
            </Form.Group>
-            
+           <br></br>     
              {/* password */}
            <Form.Group>
                <Form.Control type='password' 
@@ -105,7 +105,7 @@ return(
                 onChange={onChangeRegisterForm}
                 />
            </Form.Group>
-
+           <br></br>     
            <Form.Group>
                <Form.Control 
                 type='password' 
@@ -116,7 +116,7 @@ return(
                 onChange={onChangeRegisterForm}
               />
            </Form.Group>
-
+           <br></br>     
            <Button variant='success' type='submit'>Register</Button>
        </Form>
 

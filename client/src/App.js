@@ -9,12 +9,15 @@ import About from './views/About';
 import Tools from './views/Tools';
 import News from './views/News';
 import EditUser from './views/EditUser';
+import PostContextProvider from './contexts/PostContext';
 
 
 function App() {
   return (
     <AuthContextProvider>
-       <Router>
+      <PostContextProvider>
+
+      <Router>
       <Switch>
          <Route exact path='/' component={Landing}/>
          <Route exact path='/login' render={props => <Auth {...props} authRoute='login'/> }/>
@@ -27,6 +30,10 @@ function App() {
      
       </Switch>
     </Router>
+      </PostContextProvider>
+
+
+    
     </AuthContextProvider>
   )
 }

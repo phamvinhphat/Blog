@@ -17,7 +17,7 @@ const PostSchema = new Schema({
     url: String,
     likeCount:{
         type: Number,
-        default:0
+        default: 0
     },
     user: {
         type: Schema.Types.ObjectId,
