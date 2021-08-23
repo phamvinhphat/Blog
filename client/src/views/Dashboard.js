@@ -7,6 +7,11 @@ import  Button  from "react-bootstrap/Button"
 import  Col from "react-bootstrap/Col"
 import Row from 'react-bootstrap/Row'
 import SinglePost from "../component/posts/SinglePost"
+import AddPostModal from "../component/posts/AddPostModal"
+import addIcon from '../assets/plus-circle-fill.svg'
+import  OverlayTrigger from "react-bootstrap/OverlayTrigger"
+import  Tooltip from "react-bootstrap/Tooltip"
+import  Toast  from "react-bootstrap/Toast"
 
 
 const Dashboard = () => {
@@ -14,7 +19,7 @@ const Dashboard = () => {
     const {authState: {user: {username}}} = useContext(AuthContext)
 
 
-    const {postState: {posts, postsLoading},getPosts} = useContext(PostContext)
+    const {postState: {posts, postsLoading},getPosts,setShowAddPostModal, showToast:{show,message,type}, setShowToast} = useContext(PostContext)
     
     // start: Get all posts
     useEffect(()=>getPosts(),[])
@@ -56,6 +61,17 @@ const Dashboard = () => {
                         ))
                     }
                 </Row>
+
+                    {/* Open add post modal */}
+
+                    <OverlayTrigger placement='left' overlay={<Tooltip>Add a new thing to Blog</Tooltip>}>
+                    <Button className='btn-floating' onClick={setShowAddPostModal.bind(this,true)}>
+                    <img src={addIcon} alt="addIcon" width='60' height='60' />
+    
+                    </Button>
+                    </OverlayTrigger>
+               
+
             </>
 
         )
@@ -64,7 +80,21 @@ const Dashboard = () => {
     return(
         <div className="landing2">
             <div className="dark-overlay">
-                 <>{body}</>
+                 <>
+                 {body}
+                 <AddPostModal/>
+
+                 {/* after post is added, show toast */}
+                <Toast show={show} style={{position:'fixed', top:'20%', right: '10px'}} className={'bg-'+type+' text-white'} onClose ={setShowToast.bind(this,{show: false, message:'', type: null})}
+                  delay={3000} 
+                  autohide
+                >
+                    <Toast.Body>
+                        <strong>{message}</strong>
+                    </Toast.Body>
+                </Toast>
+
+                 </>
             </div>
       
         </div>

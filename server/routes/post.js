@@ -20,6 +20,12 @@ router.post('/', verifyToken,async(req,res) =>{
     if(!author)
     return res.status(400).json({success: false, message:'Missing author'})
 
+    if(!url)
+    return res.status(400).json({success: false, message:'Missing url'})
+
+    if(!url.startsWith('https://github.com'))
+    return res.status(400).json({success: false, message:'Not Git url'})
+
 try{
     const newPost = new Post({
         title,
@@ -69,6 +75,12 @@ router.put('/:id',verifyToken, async(req,res) =>{
 
     if(!author)
     return res.status(400).json({success: false, message:'Missing author'})
+
+    if(!url)
+    return res.status(400).json({success: false, message:'Missing url'})
+
+    if(!url.startsWith('https://github.com'))
+    return res.status(400).json({success: false, message:'Not Git url'})
 
 try{
     let updatedPost = {
