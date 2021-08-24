@@ -18,21 +18,39 @@ const  SinglePost = ({post:{_id, title, content, author, url, likeCount}}) => (
                         <p className='post-title'>{author}</p>
                      
                     </Col>
+                    
                   
                    
 
-                    <Col className='text-right'>
-                        <ActionButtons url={url} _id={_id}/>
-                     </Col>
+                 
+
                 </Row> 
+             
             </Card.Title>
             <Card.Text>{content}</Card.Text>
-            <Button>
-                <Col className='text-right'>
-                    <img src={LikeIcon} alt="LikeIcon" width='25' height='25' className='mr-2'/>
-                    <label >&nbsp;&nbsp;{likeCount}</label>
-                </Col>
-            </Button>
+            <Card.Title>
+                <Row>
+
+                <Col>
+                        <Button>
+                        <Col className='text-left'>
+                            <img src={LikeIcon} alt="LikeIcon" width='25' height='25' className='mr-2'/>
+                            <label >&nbsp;&nbsp;{likeCount}</label>
+                        </Col>
+                    </Button>
+                    </Col>   
+
+                    <Col className='text-right'>
+                            <ActionButtons url={url} _id={_id}/>
+                    </Col> 
+
+        
+
+                     
+            
+                </Row>
+            </Card.Title>
+       
          
         </Card.Body>
     </Card>

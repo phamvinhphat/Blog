@@ -13,19 +13,39 @@ POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "Phatv",
+    "username": "Phatv2",
     "password": "Phat1234"
 }
 
 ###
 POST http://localhost:5000/api/posts/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTFhMmMzY2IyZTNkMTI0OThkMWE0ODciLCJpYXQiOjE2Mjk2MzcxMjd9.ImPv7EW7Oe7be2LLaUMYQoKKFhU3WLHfR1NaMt55NZE
 
 {
-        "title": "my first post3",
+        "title": "my first posssw",
         "content": "phat",
         "author": "phatvp",
         "url": "www.youtube.com/watch?v=rgFd17fyM4A&t=2299s",
-        "likeCount" : 1
+        "likeCount" : 0
 }
+
+###
+GET http://localhost:5000/api/posts/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTFhMmMzY2IyZTNkMTI0OThkMWE0ODciLCJpYXQiOjE2MjkxMTY1MjJ9.hFjb2FoMWhwbBvHCUSSKoAI8KzQpY-sugBe_6X3EsCY
+
+###
+PUT http://localhost:5000/api/posts/611a55f5badada06fc134ce5
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTFhMmMzY2IyZTNkMTI0OThkMWE0ODciLCJpYXQiOjE2MjkxMTY1MjJ9.hFjb2FoMWhwbBvHCUSSKoAI8KzQpY-sugBe_6X3EsCY
+
+{
+    "title": "my first post1309",
+    "content": "phathasha",
+    "author": "phatvpdd",
+     "url": "https://github.com/"    
+}
+
+###
+DELETE http://localhost:5000/api/posts/61239621f492ae27344220a5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTFhMmMzY2IyZTNkMTI0OThkMWE0ODciLCJpYXQiOjE2MjkxMTY1MjJ9.hFjb2FoMWhwbBvHCUSSKoAI8KzQpY-sugBe_6X3EsCY

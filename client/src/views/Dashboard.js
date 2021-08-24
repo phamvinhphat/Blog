@@ -12,6 +12,7 @@ import addIcon from '../assets/plus-circle-fill.svg'
 import  OverlayTrigger from "react-bootstrap/OverlayTrigger"
 import  Tooltip from "react-bootstrap/Tooltip"
 import  Toast  from "react-bootstrap/Toast"
+import UpdatePostModal from "../component/posts/UpdatePostModal"
 
 
 const Dashboard = () => {
@@ -19,7 +20,7 @@ const Dashboard = () => {
     const {authState: {user: {username}}} = useContext(AuthContext)
 
 
-    const {postState: {posts, postsLoading},getPosts,setShowAddPostModal, showToast:{show,message,type}, setShowToast} = useContext(PostContext)
+    const {postState: { posts, postsLoading},getPosts,setShowAddPostModal, showToast:{show,message,type}, setShowToast} = useContext(PostContext)
     
     // start: Get all posts
     useEffect(()=>getPosts(),[])
@@ -44,7 +45,7 @@ const Dashboard = () => {
                             <Card.Text>
                                 Click the button below to track your first skill to blog
                             </Card.Text>
-                            <Button variant='primary'>BlogIT</Button>
+                            <Button variant='primary' onClick={setShowAddPostModal.bind(this,true)}>BlogIT</Button>
                         </Card.Body>
                 </Card>
             </>
@@ -52,15 +53,13 @@ const Dashboard = () => {
     } else {
         body = (
             <>
-                <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
-                    {
-                        posts.map(post => (
-                            <Col key={post._id} className='my-2'>
-                                <SinglePost post={post}/>
-                             </Col>
-                        ))
-                    }
-                </Row>
+              <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
+					{posts.map(post => (
+						<Col key={post._id} className='my-2'>
+							<SinglePost post={post} />
+						</Col>
+					))}
+				</Row>
 
                     {/* Open add post modal */}
 
@@ -83,7 +82,8 @@ const Dashboard = () => {
                  <>
                  {body}
                  <AddPostModal/>
-
+ 
+              
                  {/* after post is added, show toast */}
                 <Toast show={show} style={{position:'fixed', top:'20%', right: '10px'}} className={'bg-'+type+' text-white'} onClose ={setShowToast.bind(this,{show: false, message:'', type: null})}
                   delay={3000} 
