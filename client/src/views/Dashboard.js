@@ -20,7 +20,7 @@ const Dashboard = () => {
     const {authState: {user: {username}}} = useContext(AuthContext)
 
 
-    const {postState: { posts, postsLoading},getPosts,setShowAddPostModal, showToast:{show,message,type}, setShowToast} = useContext(PostContext)
+    const {postState: {post ,posts, postsLoading},getPosts,setShowAddPostModal, showToast:{show,message,type}, setShowToast} = useContext(PostContext)
     
     // start: Get all posts
     useEffect(()=>getPosts(),[])
@@ -54,7 +54,7 @@ const Dashboard = () => {
         body = (
             <>
               <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
-					{posts.map(post => (
+					{ posts.map(post => (
 						<Col key={post._id} className='my-2'>
 							<SinglePost post={post} />
 						</Col>
@@ -63,12 +63,12 @@ const Dashboard = () => {
 
                     {/* Open add post modal */}
 
-                    <OverlayTrigger placement='left' overlay={<Tooltip>Add a new thing to Blog</Tooltip>}>
+                    {/* <OverlayTrigger placement='left' overlay={<Tooltip>Add a new thing to Blog</Tooltip>}> */}
                     <Button className='btn-floating' onClick={setShowAddPostModal.bind(this,true)}>
-                    <img src={addIcon} alt="addIcon" width='60' height='60' />
+                    <img src={addIcon} alt="add-post" width='60' height='60' />
     
                     </Button>
-                    </OverlayTrigger>
+                    {/* </OverlayTrigger> */}
                
 
             </>
@@ -77,13 +77,14 @@ const Dashboard = () => {
     }
 
     return(
+        <>
         <div className="landing2">
             <div className="dark-overlay">
-                 <>
+                 
                  {body}
                  <AddPostModal/>
- 
-              
+                {post !== null && <UpdatePostModal/>}
+
                  {/* after post is added, show toast */}
                 <Toast show={show} style={{position:'fixed', top:'20%', right: '10px'}} className={'bg-'+type+' text-white'} onClose ={setShowToast.bind(this,{show: false, message:'', type: null})}
                   delay={3000} 
@@ -93,11 +94,12 @@ const Dashboard = () => {
                         <strong>{message}</strong>
                     </Toast.Body>
                 </Toast>
-
-                 </>
+            
+                 
             </div>
       
         </div>
+        </>
     )
 }
 export default Dashboard

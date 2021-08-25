@@ -1,15 +1,30 @@
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import From from 'react-bootstrap/Form'
-import { useContext, useState } from 'react'
-import { PostContext } from '../../contexts/PostContext'
+import { useContext, useEffect, useState } from 'react'
+import  {PostContext}  from '../../contexts/PostContext'
 
 const UpdatePostModal = () =>{
     //context
-    const{postState:{post}, showUpdatePostModal, setShowUpdatePostModal, updatePost, setShowToast} = useContext(PostContext)
+    const{
+        postState: {post}, 
+        showUpdatePostModal, 
+        setShowUpdatePostModal, 
+        updatePost, 
+        setShowToast
+    } = useContext(PostContext)
 
     //State
     const[updatedPost, setUpdatedPost] = useState(post)
+
+  
+    useEffect(() => setUpdatedPost(post),[post])
+
+ 
+    const {title, content, author, url, likeCount} = updatedPost
+
+    const onChangeUpdatedPostForm = event => setUpdatedPost({...updatedPost, [event.target.name]: event.target.value})
+
 
     //reset data
     // const resetAddPostData = () => {
@@ -27,21 +42,20 @@ const UpdatePostModal = () =>{
     const onSubmit = async event => {
         event.preventDefault()
         const {success, message} = await updatePost(updatedPost)
-      //  resetAddPostData()
-       // setShowToast({show:true, message,type: success ? 'success':'danger'})
+        setShowUpdatePostModal(false)
+       setShowToast({show:true, message,type: success ? 'success':'danger'})
     }
 
-    const {title, content, author, url, likeCount} = updatedPost
-
-    const onChangeUpdatedPostForm = event => setUpdatedPost({...updatedPost, [event.target.name]: event.target.value})
-
+   
+    
     // close
-    // const closeDialog = () => {
-    //     resetAddPostData()
-    // }
+    const closeDialog = () => {
+        setUpdatedPost(post)
+       setShowUpdatePostModal(false)
+    }
 
     return (
-        <Modal show={showUpdatePostModal} >
+        <Modal show={showUpdatePostModal} onHide={closeDialog}>
             <Modal.Header closeButton>
                 <Modal.Title>Update Blog?</Modal.Title>
             </Modal.Header>
@@ -71,7 +85,7 @@ const UpdatePostModal = () =>{
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant='secondary' >Cancel</Button>
+                    <Button variant='secondary' onClick={closeDialog}>Cancel</Button>
                     <Button variant='primary' type='submit'>BlogIT</Button>
              
                 </Modal.Footer>

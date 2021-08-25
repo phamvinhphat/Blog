@@ -3,7 +3,7 @@ import  Button  from "react-bootstrap/Button";
 import  githubIcon  from "../../assets/github.svg";
 import  editIcon  from "../../assets/pencil.svg";
 import  deleteIcon  from "../../assets/trash.svg";
-import { PostContext } from "../../contexts/PostContext";
+import  {PostContext}  from "../../contexts/PostContext";
 
 const ActionButtons =({url, _id}) => {
     const {deletePost, findPost, setShowUpdatePostModal} = useContext(PostContext)

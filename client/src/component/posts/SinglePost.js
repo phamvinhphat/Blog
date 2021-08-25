@@ -38,6 +38,7 @@ const  SinglePost = ({post:{_id, title, content, author, url, likeCount}}) => (
                             <label >&nbsp;&nbsp;{likeCount}</label>
                         </Col>
                     </Button>
+                    
                     </Col>   
 
                     <Col className='text-right'>

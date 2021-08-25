@@ -63,6 +63,8 @@ const PostContextProvider = ({children}) => {
  
         }
     }
+
+
     //Find post when user is updating post
     const findPost = postId =>{
         const post = postState.posts.find(post =>post._id === postId )
@@ -88,7 +90,14 @@ const PostContextProvider = ({children}) => {
 
 
     // Post context data
-    const postContextData = {postState,getPosts, showAddPostModal, setShowAddPostModal, addPost, showToast,setShowToast,deletePost, updatePost,findPost,showUpdatePostModal, setShowUpdatePostModal}
+    const postContextData = {
+        postState, getPosts, 
+        showAddPostModal, setShowAddPostModal, 
+        addPost, 
+        showToast,setShowToast,
+        deletePost, 
+        findPost, updatePost,
+        showUpdatePostModal, setShowUpdatePostModal}
     
     return (
         <PostContext.Provider value={postContextData}>
