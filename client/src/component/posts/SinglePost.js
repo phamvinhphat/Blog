@@ -14,7 +14,7 @@ const  SinglePost = ({post:{_id, title, content, author, url, likeCount}}) => (
                    
                     <Col>
                     
-                        <b><p className='post-title' >{title}</p></b>
+                        <b><p className='post-title'>{title}</p></b>
                         <p className='post-title'>{author}</p>
                      
                     </Col>

@@ -54,23 +54,26 @@ const AddPostModal = () =>{
             <From onSubmit={onSubmit}>
                 <Modal.Body>
                     <From.Group>
+                          <From.Text>Title</From.Text>
                         <From.Control type='text' placeholder='Title' name='title' required aria-describedby='title-help' value={title} onChange={onChangeNewPostForm}/>
-                        <From.Text id='title-help' muted>required</From.Text>
                     </From.Group>
 
                     <From.Group>
+                        <From.Text>Languages</From.Text>
                         <From.Control type='text' placeholder='Languages' name='author' required aria-describedby='Languages-help' value={author} onChange={onChangeNewPostForm} />
-                        <From.Text id='Languages-help' muted>required</From.Text>
+                       
                     </From.Group>
 
                     <From.Group>
+                         <From.Text>Content</From.Text>  
                         <From.Control as='textarea' rows={3} placeholder='Content' name='content' required aria-describedby='content-help' value={content} onChange={onChangeNewPostForm} />
-                        <From.Text id='content-help' muted>required</From.Text>  
+                        
                     </From.Group>
 
                     <From.Group>
+                        <From.Text>Url git</From.Text> 
                         <From.Control  type='text' placeholder='Git project' name='url' required aria-describedby='url-help' value={url} onChange={onChangeNewPostForm}/>
-                        <From.Text id='content-help' muted>required</From.Text>  
+                          <a href="https://github.com/" target="_blank" rel = "noreferrer" >Your Git</a>
                     </From.Group>
 
                 </Modal.Body>

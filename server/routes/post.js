@@ -19,6 +19,8 @@ router.post('/', verifyToken,async(req,res) =>{
 
     if(!author)
     return res.status(400).json({success: false, message:'Missing author'})
+    
+    if(title.le)
 
     if(!url)
     return res.status(400).json({success: false, message:'Missing url'})
@@ -81,6 +83,15 @@ router.put('/:id',verifyToken, async(req,res) =>{
 
     if(!url.startsWith('https://github.com'))
     return res.status(400).json({success: false, message:'Not Git url'})
+
+    if(title.length >= 10){
+        return res.status(400).json({success: false, message:'Mis 10'})
+        console.log('length true')
+    } else {
+        console.log('length false')
+    }
+   
+  
 
 try{
     let updatedPost = {
