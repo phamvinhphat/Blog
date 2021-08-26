@@ -20,19 +20,24 @@ Content-Type: application/json
 ###
 POST http://localhost:5000/api/posts/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTFhMmMzY2IyZTNkMTI0OThkMWE0ODciLCJpYXQiOjE2Mjk2MzcxMjd9.ImPv7EW7Oe7be2LLaUMYQoKKFhU3WLHfR1NaMt55NZE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTFhMmMzY2IyZTNkMTI0OThkMWE0ODciLCJpYXQiOjE2Mjk5NjI2NTV9.dH6bmxYoTFSxOkVkkyl1p0K5C_lVWQW3YxgEWlYxuvg
 
 {
-        "title": "my first posssw",
-        "content": "phat",
-        "author": "phatvp",
-        "url": "www.youtube.com/watch?v=rgFd17fyM4A&t=2299s",
+        "title": "Mobile",
+        "content": "mobile",
+        "author": "PHP",
+        "url": "https://github.com/daipham3213/BeHealthy",
         "likeCount" : 0
 }
 
 ###
 GET http://localhost:5000/api/posts/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTFhMmMzY2IyZTNkMTI0OThkMWE0ODciLCJpYXQiOjE2MjkxMTY1MjJ9.hFjb2FoMWhwbBvHCUSSKoAI8KzQpY-sugBe_6X3EsCY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTFhMjU4MGJkN2I1NjIwNzRiYzkxMmQiLCJpYXQiOjE2Mjk5NjI1OTh9.JwhfBplwvw_gvXVZ49TpegyvSqSWQyTsTVzbwB-9was
+
+###
+GET http://localhost:5000/api/posts/about
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTFhMjU4MGJkN2I1NjIwNzRiYzkxMmQiLCJpYXQiOjE2Mjk5NjI1OTh9.JwhfBplwvw_gvXVZ49TpegyvSqSWQyTsTVzbwB-9was
+
 
 ###
 PUT http://localhost:5000/api/posts/611a55f5badada06fc134ce5
@@ -49,3 +54,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTFhM
 ###
 DELETE http://localhost:5000/api/posts/61239621f492ae27344220a5
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTFhMmMzY2IyZTNkMTI0OThkMWE0ODciLCJpYXQiOjE2MjkxMTY1MjJ9.hFjb2FoMWhwbBvHCUSSKoAI8KzQpY-sugBe_6X3EsCY
+
+
+

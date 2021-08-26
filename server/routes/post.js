@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router()
 const verifyToken = require('../middleware/auth');
+const { populate } = require('../models/Post');
 
 const Post = require('../models/Post');
 
@@ -62,6 +63,21 @@ router.get('/',verifyToken, async(req,res) => {
 
 })
 
+//@rote GET ALL api.posts
+//@desc Get All post
+//@access public  {user: req.userId}).populate('user',['username']
+
+router.get('/about',verifyToken, async(req,res) => {
+    try{
+        //fettle is Id user request 
+        const posts = await Post.find(req._id).populate('user',['username'])
+        res.json({success: true, posts})
+    } catch(error){
+        res.status(400).json({error: err});
+    }
+
+})
+
 //@rote Update api.posts
 //@desc Update post
 //@access Private
@@ -84,13 +100,7 @@ router.put('/:id',verifyToken, async(req,res) =>{
     if(!url.startsWith('https://github.com'))
     return res.status(400).json({success: false, message:'Not Git url'})
 
-    if(title.length >= 10){
-        return res.status(400).json({success: false, message:'Mis 10'})
-        console.log('length true')
-    } else {
-        console.log('length false')
-    }
-   
+
   
 
 try{

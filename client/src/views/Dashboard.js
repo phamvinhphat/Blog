@@ -13,6 +13,7 @@ import  OverlayTrigger from "react-bootstrap/OverlayTrigger"
 import  Tooltip from "react-bootstrap/Tooltip"
 import  Toast  from "react-bootstrap/Toast"
 import UpdatePostModal from "../component/posts/UpdatePostModal"
+import EditUser from "./EditUser"
 
 
 const Dashboard = () => {
@@ -58,7 +59,9 @@ const Dashboard = () => {
 						<Col key={post._id} className='my-2'>
 							<SinglePost post={post} />
 						</Col>
+                      
 					))}
+                    
 				</Row>
 
                     {/* Open add post modal */}
@@ -80,8 +83,10 @@ const Dashboard = () => {
         <>
         <div className="landing2">
             <div className="dark-overlay">
-                 
+                 <h1 className="text-center">Blog user</h1>
+                 <h3 className='right'>Posts user: {posts.length}</h3>
                  {body}
+
                  <AddPostModal/>
                 {post !== null && <UpdatePostModal/>}
 

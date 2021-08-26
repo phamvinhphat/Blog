@@ -1,6 +1,17 @@
 import { createContext, useReducer, useState } from 'react';
 import {postReducer} from '../reducers/postReducer'
-import{apiUrl, POSTS_LOADED_FAIL, POSTS_LOADED_SUCCESS, ADD_POST, DELETE_POST, UPDATE_POST, FIND_POST} from './constants'
+import{
+    apiUrl, 
+    POSTS_LOADED_FAIL, 
+    POSTS_LOADED_SUCCESS, 
+    ADD_POST, 
+    DELETE_POST, 
+    UPDATE_POST, 
+    FIND_POST,
+    ALL_POST_FAIL,
+    ALL_POST_SUCCESS
+
+} from './constants'
 import axios from 'axios'
 
 export const PostContext = createContext()
@@ -86,12 +97,27 @@ const PostContextProvider = ({children}) => {
         }
     }
 
+    // all post 
+    const getAllPosts = async() => {
+        try {
+            const response = await axios.get(apiUrl+'/posts/about')
+          
+            if(response.data.success){
+               dispatch({type: ALL_POST_SUCCESS, payload: response.data.posts}) 
+            }
+        } catch (error) {
+            dispatch({type: ALL_POST_FAIL})
+        }
+    }
+  
+
+
 
 
 
     // Post context data
     const postContextData = {
-        postState, getPosts, 
+        postState, getPosts, getAllPosts,
         showAddPostModal, setShowAddPostModal, 
         addPost, 
         showToast,setShowToast,

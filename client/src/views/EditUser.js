@@ -66,6 +66,21 @@ function User() {
                       </Form.Group>
                     </Col>
 
+                    <Col className="pl-1" md="2">
+                      <Form.Group>
+                      <img src={emailIcon} alt="emailIcon" width='30' height='30' className='mr-2'/>
+                        <label htmlFor="exampleInputEmail1">
+                          Email user
+                        </label>
+                        <Form.Control
+                          defaultValue={{}}
+                          placeholder="Email"
+                         
+                          type="email"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+
                   </Row>
 
                   <Row>

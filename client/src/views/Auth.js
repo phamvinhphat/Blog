@@ -25,8 +25,6 @@ const Auth = ({ authRoute }) => {
       </>
     )
 
-
-
     return (
         <div className="landing">
             <div className="dark-overlay">

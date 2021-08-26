@@ -66,7 +66,6 @@ const AuthContextProvider = ({children}) =>{
             if(error.response.data) return error.response.data
             else return {success: false, message: error.message}
         }
-
     }
 
     // Logout
