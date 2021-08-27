@@ -40,7 +40,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTFhM
 
 
 ###
-PUT http://localhost:5000/api/posts/611a55f5badada06fc134ce5
+PUT http://localhost:5000/api/posts/611a2c3cb2e3d12498d1a487
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTFhMmMzY2IyZTNkMTI0OThkMWE0ODciLCJpYXQiOjE2MjkxMTY1MjJ9.hFjb2FoMWhwbBvHCUSSKoAI8KzQpY-sugBe_6X3EsCY
 
@@ -49,6 +49,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTFhM
     "content": "phathasha",
     "author": "phatvpdd",
      "url": "https://github.com/"    
+}
+
+###
+PUT http://localhost:5000/api/auth/editUser/611a2c3cb2e3d12498d1a487
+Content-Type: application/json
+
+{
+    "username": "Phatvs2", 
+    "password": "$argon2i$v=19$m=4096,t=3,p=1$oEvpHYqw8840aX9p2y4L2g$kx1XeCGEl8VQK7uTEkFnR0YUJJuATcJLeH21lyQ+8iY", 
+    "email":"huyhuyhguy@gmail.com", 
+    "NumberPhone": "025369874"   
 }
 
 ###

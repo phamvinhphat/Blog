@@ -63,7 +63,7 @@ const UpdatePostModal = () =>{
                 <Modal.Body>
                     <From.Group>
                         <From.Text>Title</From.Text>
-                        <From.Control type='text' placeholder='Title' name='title' required aria-describedby='title-help' value={title} onChange={onChangeUpdatedPostForm}/>
+                        <From.Control type='text' placeholder='Title' name='title' required aria-describedby='title-help'  onChange={onChangeUpdatedPostForm}/>
                     </From.Group>
 
                     <From.Group>

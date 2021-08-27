@@ -64,6 +64,48 @@ router.post('/register', async(req,res) =>{
 })
 
 
+//@rote Update api.user
+//@desc Update user
+//@access Private
+
+router.put('/editUser/:id',async(req,res) =>{
+    const {username, password, email, NumberPhone} = req.body
+
+    if(!username)
+    return res.status(400).json({success: false, message:'Missing title'})
+
+    if(!password)
+    return res.status(400).json({success: false, message:'Missing content'})
+
+    if(!email)
+    return res.status(400).json({success: false, message:'Missing author'})
+
+    if(!NumberPhone)
+    return res.status(400).json({success: false, message:'Missing url'})
+  
+try{
+    let updatedUser = {username, password, email, NumberPhone}
+
+    const userUpdateCondition = {_id: req.params.id, user: req.userId}
+
+    updatedUser = await User.findOneAndUpdate(userUpdateCondition, updatedUser, {new: true})
+
+    if(!updatedUser)
+    return res
+        .status(401)
+        .json({success: false, message: 'user not author'})
+
+    res.json({
+        success: true, 
+        message:'Update user success', user: updatedUser})
+}catch(error){
+    res.status(400).json({error: err});
+}
+
+
+})
+
+
 //@route POST api/auth/login
 //@desc Login user
 //@access Public
