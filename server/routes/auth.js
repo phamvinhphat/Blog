@@ -74,9 +74,7 @@ router.put('/editUser/:id',async(req,res) =>{
     if(!username)
     return res.status(400).json({success: false, message:'Missing title'})
 
-    if(!password)
-    return res.status(400).json({success: false, message:'Missing content'})
-
+  
     if(!email)
     return res.status(400).json({success: false, message:'Missing author'})
 
@@ -84,7 +82,7 @@ router.put('/editUser/:id',async(req,res) =>{
     return res.status(400).json({success: false, message:'Missing url'})
   
 try{
-    let updatedUser = {username, password, email, NumberPhone}
+    let updatedUser = {username, email, NumberPhone}
 
     const userUpdateCondition = {_id: req.params.id, user: req.userId}
 

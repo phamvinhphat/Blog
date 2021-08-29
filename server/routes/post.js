@@ -101,8 +101,6 @@ router.put('/:id',verifyToken, async(req,res) =>{
     return res.status(400).json({success: false, message:'Not Git url'})
 
 
-  
-
 try{
     let updatedPost = {
         title,

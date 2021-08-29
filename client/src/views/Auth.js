@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom'
 import Spinner from 'react-bootstrap/Spinner' 
 
 const Auth = ({ authRoute }) => {
+   
     const {authState: {authLoading, isAuthenticated}} = useContext(AuthContext)
 
     let body

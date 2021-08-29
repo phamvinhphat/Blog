@@ -23,9 +23,9 @@ const UpdatePostModal = () =>{
  
     const {title, content, author, url, likeCount} = updatedPost
 
+
+
     const onChangeUpdatedPostForm = event => setUpdatedPost({...updatedPost, [event.target.name]: event.target.value})
-
-
     //reset data
     // const resetAddPostData = () => {
     //     setNewPost({
@@ -63,7 +63,7 @@ const UpdatePostModal = () =>{
                 <Modal.Body>
                     <From.Group>
                         <From.Text>Title</From.Text>
-                        <From.Control type='text' placeholder='Title' name='title' required aria-describedby='title-help'  onChange={onChangeUpdatedPostForm}/>
+                        <From.Control type='text' placeholder='Title' name='title' required aria-describedby='title-help' value={title} onChange={onChangeUpdatedPostForm}/>
                     </From.Group>
 
                     <From.Group>

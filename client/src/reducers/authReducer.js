@@ -13,11 +13,13 @@ export const authReducer = (state, action) => {
             }
 
             case EDIT_USER:
-                const editUser = state.posts.map(user => user._id)
-                return{
+            return{
                     ...state,
-                    user: editUser
-                }
+                    authLoading: false,
+                    isAuthenticated,
+                    user
+            }
+                
 
 
             default:

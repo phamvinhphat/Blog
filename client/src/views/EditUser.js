@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Icon from '../assets/user.svg'
 import userIcon from '../assets/user2.svg'
 import emailIcon from '../assets/email.svg'
@@ -23,12 +23,24 @@ import {
 
 function User() {
 
-  const {authState: {user: {username,email,NumberPhone}}}= useContext(AuthContext)
+  const {authState: {user},updateUser}= useContext(AuthContext)
 
+  const[updatedUser, setUpdatedUser] = useState(user)
+
+  const {username, email, NumberPhone} = updatedUser
+
+  const onChangeUpdatedUserForm = event => setUpdatedUser({...updatedUser, [event.target.name]: event.target.value})
+   
+  const onSubmit = async event => {
+    event.preventDefault()
+    const {success, message} = await updateUser(updatedUser)
+  //   setShowUpdatePostModal(false)
+  //  setShowToast({show:true, message,type: success ? 'success':'danger'})
+}
 
   return (
     <>
-      <Container fluid>
+      <Container fluid onSubmit={onSubmit}>
         <Row>
           <Col md="8">
             <Card>
@@ -44,8 +56,9 @@ function User() {
                       <img src={userIcon} alt="userIcon" width='30' height='30' className='mr-2'/>
                         <label>Username</label>
                         <Form.Control
-                          defaultValue={username}
+                          Value={username}
                           placeholder="Username"
+                          onChange={onChangeUpdatedUserForm}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
@@ -58,28 +71,14 @@ function User() {
                           Email user
                         </label>
                         <Form.Control
-                          defaultValue={email}
+                          Value={email}
+                          onChange={onChangeUpdatedUserForm}
                           placeholder="Email"
                          
                           type="email"
                         ></Form.Control>
                       </Form.Group>
-                    </Col>
-
-                    <Col className="pl-1" md="2">
-                      <Form.Group>
-                      <img src={emailIcon} alt="emailIcon" width='30' height='30' className='mr-2'/>
-                        <label htmlFor="exampleInputEmail1">
-                          Email user
-                        </label>
-                        <Form.Control
-                          defaultValue={{}}
-                          placeholder="Email"
-                         
-                          type="email"
-                        ></Form.Control>
-                      </Form.Group>
-                    </Col>
+                    </Col>     
 
                   </Row>
 
@@ -87,9 +86,9 @@ function User() {
                     <Col className="pr-1" md="6">
                       <Form.Group>
                       <img src={nameIcon} alt="nameIcon" width='30' height='30' className='mr-2'/>
-                        <label>Name(BUG Don't data)</label>
+                        <label>pass(BUG Don't data)</label>
                         <Form.Control
-                  
+                     
                           placeholder="Email"
                           type="text"
                         ></Form.Control>
@@ -102,8 +101,8 @@ function User() {
                      
                         <label>Number Phone</label>
                         <Form.Control
-                           defaultValue={NumberPhone}
-                       
+                           Value={NumberPhone}
+                           onChange={onChangeUpdatedUserForm}
 
                           placeholder="Number Phone"
                           type="text"
@@ -174,7 +173,7 @@ function User() {
                   className="btn-simple btn-icon"
                   href="#pablo"
                   onClick={(e) => e.preventDefault()}
-                  variant="link"
+                  variant='primary' type='submit'
                 >
                   <i className="fab fa-facebook-square"></i>
                 </Button>
@@ -183,7 +182,8 @@ function User() {
                   className="btn-simple btn-icon"
                   href="#pablo"
                   onClick={(e) => e.preventDefault()}
-                  variant="link"
+                
+                  variant='primary' type='submit'
                 >
                   <i className="fab fa-twitter"></i>
                 </Button>
@@ -192,7 +192,7 @@ function User() {
                   className="btn-simple btn-icon"
                   href="#pablo"
                   onClick={(e) => e.preventDefault()}
-                  variant="link"
+                  variant='primary' type='submit'
                 >
                   <i className="fab fa-google-plus-square"></i>
                 </Button>

@@ -1,17 +1,26 @@
 import { createContext, useReducer, useEffect } from "react";
 import axios from 'axios'
 import {authReducer} from '../reducers/authReducer'
-import {apiUrl,LOCAL_STORAGE_TOKEN_NAME} from './constants'
+import {
+    apiUrl,
+    LOCAL_STORAGE_TOKEN_NAME,
+    SET_AUTH,
+    EDIT_USER
+} from './constants'
 import setAuthToken from'../utils/setAuthToken'
+import { useState } from "react";
 
 export const AuthContext = createContext()
 
-const AuthContextProvider = ({children}) =>{
+const AuthContextProvider = ({children}) => {
     const[authState, dispatch] = useReducer(authReducer, {
         authLoading: true,
         isAuthenticated: false,
         user: null
     })   
+
+    const[showUpdateUserModal, setShowUpdateUserModal] = useState(false)
+
 
     // Authenticate user 
     const loadUser = async () =>{
@@ -22,12 +31,12 @@ const AuthContextProvider = ({children}) =>{
         try {
             const response = await axios.get(apiUrl+'/auth')
             if(response.data.success){
-                dispatch({type: 'SET_AUTH', payload: {isAuthenticated: true, user: response.data.user}})
+                dispatch({type: SET_AUTH, payload: {isAuthenticated: true, user: response.data.user}})
             }
         } catch (error) {
             localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME)   
             setAuthToken(null)
-            dispatch({type: 'SET_AUTH', payload: {isAuthenticated: false, user: null} })
+            dispatch({type: SET_AUTH, payload: {isAuthenticated: false, user: null} })
 
         }
 
@@ -71,12 +80,28 @@ const AuthContextProvider = ({children}) =>{
     // Logout
     const logoutUser = () => {
         localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME)
-        dispatch({type: 'SET_AUTH', payload: {isAuthenticated: false, user: null} }) 
+        dispatch({type: SET_AUTH , payload: {isAuthenticated: false, user: null} }) 
+    }
+
+
+    //BUG Update success nut don't in data : ((
+    // edit user
+    const updateUser = async updatedUser => {
+        try {
+            const response = await axios.put(apiUrl+'/auth/editUser/'+updatedUser._id, updatedUser)
+            if(response.data.success){
+                dispatch({type: EDIT_USER, payload: response.data.user})
+                await loadUser()
+                return response.data
+            }
+        } catch (error) {
+            return error.response.data ? error.response.data : {success: false, message: 'server error'}
+        }
     }
 
 
     // context data
-    const authContextData = {loginUser, registerUser, logoutUser, authState}
+    const authContextData = {loginUser, registerUser, logoutUser, authState, updateUser,showUpdateUserModal, setShowUpdateUserModal}
     
     
     // Return provider
