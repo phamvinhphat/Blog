@@ -85,7 +85,7 @@ const Dashboard = () => {
             <div className="dark-overlay">
                  <h1 className="text-center">Blog user</h1>
                  <h3 className='right'>Posts user: {posts.length}</h3>
-                 {body}
+                 {/* {body} */}
 
                  <AddPostModal/>
                 {post !== null && <UpdatePostModal/>}

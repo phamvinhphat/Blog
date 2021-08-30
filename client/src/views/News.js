@@ -10,32 +10,35 @@ import  Tooltip from "react-bootstrap/Tooltip"
 import  Toast  from "react-bootstrap/Toast"
 import { NewsContext } from "../contexts/NewsContext"
 import errorServerIcon from "../assets/errorServer2.svg"
-import SingleNews from "../component/news/SingleNews"
+
 import addNewsIcon from "../assets/addNews.svg"
+import SingleNews from "../component/news/SingleNews"
 
 const News = () => {
 
-    const {
-        newsState: {news, newss,newsLoading},
-        getNews, 
-        showAddNewsModal, setShowAddNewsModal,
-        showToast:{show,message,type}, setShowToast
-    } = useContext(NewsContext) 
+    const {authState: {user: {username}}} = useContext(AuthContext)
+
+
+    const {newsState: {New ,News, NewsLoading},getNews,setShowAddNewsModal, showToast:{show,message,type}, setShowToast} = useContext(NewsContext)
+    
  
      // start: Get all posts
     useEffect(()=>getNews(),[])
 
     let body = null 
     
-    if(newsLoading){
-        <div className="spinner-container">
-            <Spinner animation='border' variant='info'/>
-        </div>
-    } else if (newss.length === 0) {
+    if(NewsLoading){
+        body = (
+            <div className="spinner-container">
+                <Spinner animation='border' variant='info'/>
+            </div>
+        )
+        
+    } else if (News.length === 0) {
         body = (
             <>
                 <Card className='text-center mx-5 my-5'>
-                    <Card.Header as='h1'> Server news error 
+                    <Card.Header as='h1'> Server news error {username}
                     </Card.Header>
                          <Card.Body>
                          <img src={errorServerIcon} alt="errorServer" width='50' height='50' className='mr-2'/>
@@ -50,9 +53,9 @@ const News = () => {
         body = (
             <>
               <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
-					{ newss.map(news => (
-						<Col key={news._id} className='my-2'>
-							<SingleNews news={news} />
+					{ News.map(New => (
+						<Col key={New._id} className='my-2'>
+							<SingleNews New={New} />
 						</Col>
                       
 					))}
@@ -79,7 +82,7 @@ const News = () => {
         <>
             <div className="news">
                 <div className="dark-overlay">
-                    <div className="landing-inner">
+                  
                         <h1 className="text-center">News</h1>
                          {body}
 
@@ -95,7 +98,7 @@ const News = () => {
                         </Toast>
 
                     </div>
-                </div>
+              
             </div>
         </>
     )
