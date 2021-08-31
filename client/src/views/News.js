@@ -1,51 +1,55 @@
+import { NewsContext } from "../contexts/NewsContext"
 import { useContext, useEffect } from "react"
 import  Spinner  from "react-bootstrap/Spinner"
+import { AuthContext } from "../contexts/AuthContext"
 import  Card  from "react-bootstrap/Card"
 import  Button  from "react-bootstrap/Button"
 import  Col from "react-bootstrap/Col"
 import Row from 'react-bootstrap/Row'
-import { AuthContext } from "../contexts/AuthContext"
+//import SinglePost from "../component/news/SingleNews"
+//import AddPostModal from "../component/posts/AddPostModal"
+import addIcon from '../assets/plus-circle-fill.svg'
 import  OverlayTrigger from "react-bootstrap/OverlayTrigger"
 import  Tooltip from "react-bootstrap/Tooltip"
 import  Toast  from "react-bootstrap/Toast"
-import { NewsContext } from "../contexts/NewsContext"
-import errorServerIcon from "../assets/errorServer2.svg"
-
-import addNewsIcon from "../assets/addNews.svg"
 import SingleNews from "../component/news/SingleNews"
+//import UpdatePostModal from "../component/posts/UpdatePostModal"
+//import EditUser from "./EditUser"
+import AddNewsModal from "../component/news/AddNewsModal"
+
 
 const News = () => {
 
-    const {authState: {user: {username}}} = useContext(AuthContext)
+ // const {State: {user: {username}}} = useContext(AuthContext)
 
 
-    const {newsState: {New ,News, NewsLoading},getNews,setShowAddNewsModal, showToast:{show,message,type}, setShowToast} = useContext(NewsContext)
+    const {newsState: {news, newsLoading},getNews,setShowAddNewsModal, showToast:{show,message,type}, setShowToast} = useContext(NewsContext)
     
- 
-     // start: Get all posts
+    // start: Get all posts
     useEffect(()=>getNews(),[])
 
-    let body = null 
-    
-    if(NewsLoading){
+    let body = null
+    if(newsLoading){
         body = (
             <div className="spinner-container">
                 <Spinner animation='border' variant='info'/>
             </div>
         )
-        
-    } else if (News.length === 0) {
+    } else if(news.length === 0) {
         body = (
             <>
                 <Card className='text-center mx-5 my-5'>
-                    <Card.Header as='h1'> Server news error {username}
+                    <Card.Header as='h1'> Hi
                     </Card.Header>
                          <Card.Body>
-                         <img src={errorServerIcon} alt="errorServer" width='50' height='50' className='mr-2'/>
+                            <Card.Title>
+                                Welcome to Blog
+                            </Card.Title>
                             <Card.Text>
-                                 Need a quick fix
+                                Click the button below to track your first skill to blog
                             </Card.Text>
-                         </Card.Body>
+                            {<Button variant='primary' onClick={setShowAddNewsModal.bind(this,true)}>BlogIT</Button>}
+                        </Card.Body>
                 </Card>
             </>
         )
@@ -53,55 +57,55 @@ const News = () => {
         body = (
             <>
               <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
-					{ News.map(New => (
-						<Col key={New._id} className='my-2'>
-							<SingleNews New={New} />
+					{ news.map(news => (
+						<Col key={news._id} className='my-2'>
+							<SingleNews news={news} />
 						</Col>
                       
 					))}
                     
 				</Row>
 
-                    {/* Open add post modal */}
+                    {/* Open add post modal onClick={setShowAddNewsModal.bind(this,true)}*/}
 
-                     <OverlayTrigger placement='left' overlay={<Tooltip>Add a news</Tooltip>}>
-                    <Button className='btn-floating' onClick={setShowAddNewsModal.bind(this,true)}>
-                    <img src={addNewsIcon} alt="add-post" width='60' height='60' />
-    
-                    </Button>
+                      <OverlayTrigger placement='left' overlay={<Tooltip>Add a news</Tooltip>}>
+                         <Button className='btn-floating' onClick={setShowAddNewsModal.bind(this,true)}>
+                        <img src={addIcon} alt="add-post" width='60' height='60' />
+                        </Button>
                     </OverlayTrigger> 
-               
+                
 
             </>
 
         )
     }
 
-
-    return (
+    return(
         <>
-            <div className="news">
-                <div className="dark-overlay">
-                  
-                        <h1 className="text-center">News</h1>
-                         {body}
+        <div className="landing2">
+            <div className="dark-overlay">
+                 <h1 className="text-center">News</h1>
+                 {/* <h3 className='right'>Posts user: {posts.length}</h3> */}
+                 {body} 
 
-                        {/* after news is added, show toast */}
-                        <Toast show={show} style={{position:'fixed', top:'20%', right: '10px'}} className={'bg-'+type+' text-white'} onClose ={setShowToast.bind(this,{show: false, message:'', type: null})}
-                            delay={3000} 
-                            autohide
-                        >
-                
-                            <Toast.Body>
-                                    <strong>{message}</strong>
-                            </Toast.Body>
-                        </Toast>
+                  <AddNewsModal/>
+               {/*} {post !== null && <UpdatePostModal/>} */}
 
-                    </div>
-              
+                 {/* after post is added, show toast */}
+                <Toast show={show} style={{position:'fixed', top:'20%', right: '10px'}} className={'bg-'+type+' text-white'} onClose ={setShowToast.bind(this,{show: false, message:'', type: null})}
+                  delay={3000} 
+                  autohide
+                >
+                    <Toast.Body>
+                        <strong>{message}</strong>
+                    </Toast.Body>
+                </Toast>
+            
+                 
             </div>
+      
+        </div>
         </>
     )
 }
-
 export default News

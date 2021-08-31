@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Landing from './component/layout/Landing'
 import Auth from './views/Auth'
 import AuthContextProvider from './contexts/AuthContext';
+import NewsContextProvider from './contexts/NewsContext';
 import Dashboard from './views/Dashboard';
 import ProtectedRoute from './component/routing/ProtectedRoute';
 import About from './views/About';
@@ -16,7 +17,7 @@ function App() {
   return (
     <AuthContextProvider>
       <PostContextProvider>
-
+        <NewsContextProvider>
       <Router>
       <Switch>
          <Route exact path='/' component={Landing}/>
@@ -30,6 +31,7 @@ function App() {
      
       </Switch>
     </Router>
+        </NewsContextProvider>
       </PostContextProvider>
 
 

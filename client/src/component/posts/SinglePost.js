@@ -44,11 +44,7 @@ const  SinglePost = ({post:{_id, title, content, author, url, likeCount}}) => (
                     <Col className='text-right'>
                             <ActionButtons url={url} _id={_id} likeCount={likeCount}/>
                     </Col> 
-
         
-
-                     
-            
                 </Row>
             </Card.Title>
        

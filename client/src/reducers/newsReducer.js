@@ -1,6 +1,7 @@
 import {
     NEWS_LOADED_FAIL, 
-    NEWS_LOADED_SUCCESS
+    NEWS_LOADED_SUCCESS,
+    ADD_NEWS
 } from "../contexts/constants"
 
 export const newsReducer =(state, action) => {
@@ -12,17 +13,25 @@ export const newsReducer =(state, action) => {
     case NEWS_LOADED_SUCCESS:  
     return{
         ...state,
-        News: payload,
-        NewsLoading: false
+        news: payload,
+        newsLoading: false
     }
 
         // FAIL
     case NEWS_LOADED_FAIL:  
     return{
         ...state,
-        News: [],
-        NewsLoading: false
+        news: [],
+        newsLoading: false
     }
+
+       // add news
+       case ADD_NEWS:  
+       return{
+           ...state,
+           news: [...state.news, payload]
+      
+       }
     
     default: 
         return state

@@ -22,4 +22,4 @@ export const ALL_POST_FAIL = 'ALL_POST_FAIL'
 //News
 export const NEWS_LOADED_SUCCESS = 'NEWS_LOADED_SUCCESS'
 export const NEWS_LOADED_FAIL = 'NEWS_LOADED_FAIL'
-
+export const ADD_NEWS = 'ADD_NEWS'

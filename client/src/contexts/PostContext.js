@@ -10,7 +10,6 @@ import{
     FIND_POST,
     ALL_POST_FAIL,
     ALL_POST_SUCCESS
-
 } from './constants'
 import axios from 'axios'
 

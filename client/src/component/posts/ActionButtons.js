@@ -12,7 +12,7 @@ import  Col  from "react-bootstrap/Col";
 const ActionButtons =({url, _id, likeCount}) => {
     
     
-    
+    // Like pots
     const {  
         postState: {post}, 
         deletePost, 
@@ -63,7 +63,7 @@ const ActionButtons =({url, _id, likeCount}) => {
                 </Button>
              </OverlayTrigger>
 
-             <Col  onSubmit={onSubmit}>
+              <Col  onSubmit={onSubmit}>
                     <Button onChange={ {onChangeUpdatedPostForm}}>
                       
                             <img src={LikeIcon} alt="LikeIcon" width='25' height='25' className='mr-2'/>
@@ -71,7 +71,7 @@ const ActionButtons =({url, _id, likeCount}) => {
                           
                             
                     </Button>        
-            </Col>  
+            </Col>   
 
         
 

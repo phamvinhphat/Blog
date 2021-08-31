@@ -2,31 +2,36 @@ import  Card  from "react-bootstrap/Card";
 import  Row  from "react-bootstrap/Row";
 import  Col  from "react-bootstrap/Col";
 import  Badge  from "react-bootstrap/Badge";
+import  CardImg  from "react-bootstrap/CardImg";
 import  Button  from "react-bootstrap/Button";
 import LikeIcon from "../../assets/like.svg"
+import ActionButtons from "./ActionButtons";
 
 
-const  SingleNews = ({news:{_id, title, content, author, url, attachment, likeCount}}) => (
+const  SingleNews = ({news: {_id,title, content, author, url, attachment, likeCount}}) => (
     <Card className='shadow' border={'success'}>
         <Card.Body>
-        <Card.Title>
-                <Row>
-                   
+   
+            <Card.Title>
+                <Row>                   
                     <Col>
                     
-                        <b><p className='post-title'>{attachment}</p></b>
+                        <b><p className='post-title'>{title}</p></b>
+                        <p className='post-title'>{author}</p>
+                     
                     </Col>
 
                 </Row> 
              
             </Card.Title>
+
             <Card.Title>
-                <Row>
-                   
+                <Row>                   
                     <Col>
                     
-                        <b><p className='post-title'>{title}</p></b>
-                        <p className='post-title'>{author}</p>
+                        {/* //<CardImg img={attachment} title="Title" className="classes.media"/>
+                      */}
+                      <p className='post-title'>{attachment}</p>
                      
                     </Col>
 
@@ -48,9 +53,9 @@ const  SingleNews = ({news:{_id, title, content, author, url, attachment, likeCo
                     
                     </Col> 
 
-                    {/* <Col className='text-right'>
+                     <Col className='text-right'>
                             <ActionButtons url={url} _id={_id} likeCount={likeCount}/>
-                    </Col>  */}
+                    </Col>  
         
                 </Row>
             </Card.Title>
