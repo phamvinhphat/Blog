@@ -32,6 +32,8 @@ const  AllPost = ({post:{_id, title, content, author, url, likeCount, user} }) =
                         <p className='post-title'>Languages: {author}</p>
                       
                     </Col>
+                    
+                 
                 </Row> 
              
             </Card.Title>

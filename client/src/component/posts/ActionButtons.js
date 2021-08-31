@@ -8,6 +8,9 @@ import  OverlayTrigger from "react-bootstrap/OverlayTrigger"
 import  Tooltip from "react-bootstrap/Tooltip"
 import LikeIcon from "../../assets/like.svg"
 import  Col  from "react-bootstrap/Col";
+import  Card  from "react-bootstrap/Card";
+import  Row  from "react-bootstrap/Row";
+
 
 const ActionButtons =({url, _id, likeCount}) => {
     
@@ -45,37 +48,40 @@ const ActionButtons =({url, _id, likeCount}) => {
 
     return(
         <>
-         <OverlayTrigger placement='left' overlay={<Tooltip>Git code Blog</Tooltip>}>
-            <Button className='post-button' href={url} target='_blank'>
-                <img src={githubIcon} alt="play" width='32' height='32'/>
-            </Button>
-            </OverlayTrigger>
+        <Card.Title>
+            <Row>
+                <Col className='text-right'>
+                    <OverlayTrigger placement='left' overlay={<Tooltip>Git code Blog</Tooltip>}>
+                        <Button className='post-button' href={url} target='_blank'>
+                            <img src={githubIcon} alt="play" width='32' height='32'/>
+                        </Button>
+                    </OverlayTrigger>
 
-            <OverlayTrigger placement='left' overlay={<Tooltip> Edit Blog </Tooltip>}>
-                <Button className='post-button' onClick={choosePost.bind(this,_id)}>
-                    <img src={editIcon} alt="editIcon" width='24' height='24'/>
-                </Button>
-            </OverlayTrigger>
+                    <OverlayTrigger placement='left' overlay={<Tooltip> Edit Blog </Tooltip>}>
+                        <Button className='post-button' onClick={choosePost.bind(this,_id)}>
+                            <img src={editIcon} alt="editIcon" width='24' height='24'/>
+                        </Button>
+                    </OverlayTrigger>
 
-            <OverlayTrigger placement='right' overlay={<Tooltip> Delete Blog </Tooltip>}>
-                <Button className='post-button' onClick={deletePost.bind(this,_id)}>
-                    <img src={deleteIcon} alt="deleteIcon" width='24' height='24'/>
-                </Button>
-             </OverlayTrigger>
+                    <OverlayTrigger placement='right' overlay={<Tooltip> Delete Blog </Tooltip>}>
+                        <Button className='post-button' onClick={deletePost.bind(this,_id)}>
+                            <img src={deleteIcon} alt="deleteIcon" width='24' height='24'/>
+                        </Button>
+                    </OverlayTrigger>
+                </Col>
+            
 
-              <Col  onSubmit={onSubmit}>
-                    <Button onChange={ {onChangeUpdatedPostForm}}>
-                      
-                            <img src={LikeIcon} alt="LikeIcon" width='25' height='25' className='mr-2'/>
-                            <label >&nbsp;&nbsp;{likeCount}</label>
-                          
-                            
-                    </Button>        
-            </Col>   
+                <Col  onSubmit={onSubmit} className='text-right'>
+                        <Button onChange={ {onChangeUpdatedPostForm}}>
+                                <img src={LikeIcon} alt="LikeIcon" width='25' height='25' className='mr-2'/>
+                                <label >&nbsp;&nbsp;{likeCount}</label>                         
+                        </Button>        
+                </Col>   
 
-        
+            </Row>
 
 
+        </Card.Title>
         </>
     )
 }
