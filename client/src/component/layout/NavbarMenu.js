@@ -38,7 +38,7 @@ const NavbarMenu = () =>{
                            Tools
                          </Nav.Link>
 
-                         <Nav.Link className='font-weight-bolder text-white' to='/news' as={Link}>
+                         <Nav.Link className='font-weight-bolder text-white' to='/news/all' as={Link}>
                            New
                          </Nav.Link>
                     </Nav>

@@ -11,10 +11,17 @@ import  Col  from "react-bootstrap/Col";
 
 const ActionButtons = ({url,_id,likeCount}) => {
 
-    // const {
-    // newsState:{New},
-    // setShowUpdateNewsModal,
-    // } = useContext(NewsContext)
+     const {
+        // newsState:{New},
+        setShowUpdateNewsModal,
+        deleteNews,
+        findNews
+     } = useContext(NewsContext)
+
+     const chooseNews = newsId => {
+        findNews(newsId)
+        setShowUpdateNewsModal(true)
+     }
 
     return(
         <>
@@ -27,14 +34,14 @@ const ActionButtons = ({url,_id,likeCount}) => {
 
             {/* Button Edit news */}
             <OverlayTrigger placement='left' overlay={<Tooltip>edit news</Tooltip>}>
-                <Button className='post-button'>
-                    <img src={editIcon} alt='Delete-news' width='30' height='30'/>
+                <Button className='post-button' onClick={chooseNews.bind(this,_id)}>
+                    <img src={editIcon} alt='edit-news' width='30' height='30'/>
                 </Button>
             </OverlayTrigger>
 
             {/* Button update news */}
             <OverlayTrigger placement='left' overlay={<Tooltip>Delete news</Tooltip>}>
-                <Button className='post-button'>
+                <Button className='post-button' onClick={deleteNews.bind(this,_id)}>
                     <img src={deleteIcon} alt='Delete-news' width='30' height='30'/>
                 </Button>
             </OverlayTrigger>

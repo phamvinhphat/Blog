@@ -20,6 +20,11 @@ const NewsSchema = new Schema({
         type: Number,
         default: 0
     },
+    
+    createAt: {
+        type: Date,
+        default: Date.now
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref:'users'

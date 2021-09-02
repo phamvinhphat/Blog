@@ -10,6 +10,7 @@ import About from './views/About';
 import Tools from './views/Tools';
 import News from './views/News';
 import EditUser from './views/EditUser';
+import NewsAll from './views/NewsAll';
 import PostContextProvider from './contexts/PostContext';
 
 
@@ -27,6 +28,7 @@ function App() {
          <ProtectedRoute exact path='/about' component={About}/>
          <ProtectedRoute exact path='/tools' component={Tools}/>
          <ProtectedRoute exact path='/news' component={News}/>
+         <ProtectedRoute exact path='/news/all' component={NewsAll}/>
          <ProtectedRoute exact path='/edit' component={EditUser}/>
      
       </Switch>

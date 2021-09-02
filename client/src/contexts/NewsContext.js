@@ -4,7 +4,12 @@ import{
     apiUrl, 
     NEWS_LOADED_SUCCESS, 
     NEWS_LOADED_FAIL,
-    ADD_NEWS
+    ADD_NEWS,
+    DELETE_NEWS,
+    FIND_NEWS,
+    UPDATE_NEWS,
+    ALL_NEWS_SUCCESS,
+    ALL_NEWS_FAIL
 } from './constants'
 import axios from 'axios'
 
@@ -54,54 +59,53 @@ const NewsContextProvider = ({children}) => {
     }
 
     // //delete post
-    // const deletePost = async postId =>{
+    const deleteNews = async newsId =>{
 
-    //     try {
-    //         const response = await axios.delete(apiUrl+'/posts/'+postId)
-    //         if(response.data.success) {
-    //             dispatch({type: DELETE_POST, payload: postId})
-         
-    //         }
-    //     } catch (error) {
-    //         return error.response.data ? error.response.data : {success: false, message: 'server error'}
+        try {
+            const response = await axios.delete(apiUrl+'/news/'+newsId)
+            if(response.data.success) {
+                dispatch({type: DELETE_NEWS, payload: newsId})       
+            }
+        } catch (error) {
+            return error.response.data ? error.response.data : {success: false, message: 'server error'}
  
-    //     }
-    // }
+        }
+    }
 
 
     // //Find post when user is updating post
-    // const findPost = postId =>{
-    //     const post = postState.posts.find(post =>post._id === postId )
-    //     dispatch({type: FIND_POST, payload: post})
-    // }
+    const findNews = newsId => {
+        const news = newsState.news.find(New => New._id === newsId )
+        dispatch({type: FIND_NEWS, payload: news})
+    }
 
-    // // update post
-    // const updatePost = async updatedPost => {
-    //     try {
-    //         const response = await axios.put(apiUrl+'/posts/'+updatedPost._id, updatedPost)
-    //         if(response.data.success) {
-    //             dispatch({type: UPDATE_POST, payload: response.data.post})
-    //             return response.data
-    //         }
+    // update post
+    const updateNews = async updatedNews => {
+        try {
+            const response = await axios.put(apiUrl+'/news/'+updatedNews._id, updatedNews)
+            if(response.data.success) {
+                dispatch({type: UPDATE_NEWS, payload: response.data.New})
+                return response.data
+            }
        
-    //     } catch (error) {
-    //         return error.response.data ? error.response.data : {success: false, message: 'server error'}
+        } catch (error) {
+            return error.response.data ? error.response.data : {success: false, message: 'server error'}
 
-    //     }
-    // }
+        }
+    }
 
-    // // all post 
-    // const getAllPosts = async() => {
-    //     try {
-    //         const response = await axios.get(apiUrl+'/posts/about')
+    // all post 
+    const getAllNews = async() => {
+        try {
+            const response = await axios.get(apiUrl+'/news/all')
           
-    //         if(response.data.success){
-    //            dispatch({type: ALL_POST_SUCCESS, payload: response.data.posts}) 
-    //         }
-    //     } catch (error) {
-    //         dispatch({type: ALL_POST_FAIL})
-    //     }
-    // }
+            if(response.data.success){
+               dispatch({type: ALL_NEWS_SUCCESS, payload: response.data.news}) 
+            }
+        } catch (error) {
+            dispatch({type: ALL_NEWS_FAIL})
+        }
+    }
   
 
 
@@ -111,15 +115,15 @@ const NewsContextProvider = ({children}) => {
     // Post context data
     const newsContextData = {
         newsState, 
-        getNews, 
+        getNews, getAllNews,
        // getAllPosts,
         showAddNewsModal,
         setShowAddNewsModal, 
         addNews ,
         showToast,
-         setShowToast,
-       // deletePost, 
-       // findPost, updatePost,
+        setShowToast,
+        deleteNews, 
+        findNews, updateNews,
         showUpdateNewsModal, 
         setShowUpdateNewsModal
     }

@@ -1,33 +1,27 @@
 import { NewsContext } from "../contexts/NewsContext"
 import { useContext, useEffect } from "react"
 import  Spinner  from "react-bootstrap/Spinner"
-import { AuthContext } from "../contexts/AuthContext"
 import  Card  from "react-bootstrap/Card"
 import  Button  from "react-bootstrap/Button"
 import  Col from "react-bootstrap/Col"
 import Row from 'react-bootstrap/Row'
-//import SinglePost from "../component/news/SingleNews"
-//import AddPostModal from "../component/posts/AddPostModal"
-import addIcon from '../assets/plus-circle-fill.svg'
-import  OverlayTrigger from "react-bootstrap/OverlayTrigger"
-import  Tooltip from "react-bootstrap/Tooltip"
 import  Toast  from "react-bootstrap/Toast"
 import SingleNews from "../component/news/SingleNews"
 import Navbar from 'react-bootstrap/Navbar'
-import AddNewsModal from "../component/news/AddNewsModal"
-import UpdateNewsMobal from "../component/news/UpdateNewsMobal"
+import AllNews from "../component/news/AllNews"
 import { Nav } from "react-bootstrap"
 import { Link } from 'react-router-dom'
 
-const News = () => {
+
+const NewsAll = () => {
 
  // const {State: {user: {username}}} = useContext(AuthContext)
 
 
-    const {newsState: {New,news, newsLoading},getNews,setShowAddNewsModal, showToast:{show,message,type}, setShowToast} = useContext(NewsContext)
+    const {newsState: {New,news, newsLoading},getAllNews,setShowAddNewsModal, showToast:{show,message,type}, setShowToast} = useContext(NewsContext)
     
     // start: Get all posts
-    useEffect(()=>getNews(),[])
+    useEffect(()=>getAllNews(),[])
 
     let body = null
     if(newsLoading){
@@ -40,16 +34,12 @@ const News = () => {
         body = (
             <>
                 <Card className='text-center mx-5 my-5'>
-                    <Card.Header as='h1'> Hi
+                    <Card.Header as='h1'>
                     </Card.Header>
                          <Card.Body>
                             <Card.Title>
-                                Welcome to Blog
+                                ERROR 404 
                             </Card.Title>
-                            <Card.Text>
-                                Click the button below to track your first skill to blog
-                            </Card.Text>
-                            {<Button variant='primary' onClick={setShowAddNewsModal.bind(this,true)}>BlogIT</Button>}
                         </Card.Body>
                 </Card>
             </>
@@ -60,22 +50,12 @@ const News = () => {
               <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
 					{ news.map(news => (
 						<Col key={news._id} className='my-2'>
-							<SingleNews news={news} />
+							<AllNews news={news} />
 						</Col>
                       
 					))}
                     
 				</Row>
-
-                    {/* Open add post modal onClick={setShowAddNewsModal.bind(this,true)}*/}
-
-                      <OverlayTrigger placement='left' overlay={<Tooltip>Add a news</Tooltip>}>
-                         <Button className='btn-floating' onClick={setShowAddNewsModal.bind(this,true)}>
-                        <img src={addIcon} alt="add-post" width='60' height='60' />
-                        </Button>
-                    </OverlayTrigger> 
-                
-
             </>
 
         )
@@ -87,8 +67,7 @@ const News = () => {
             <div className="dark-overlay">
                  <h1 className="text-center">News</h1>
                  {/* <h3 className='right'>Posts user: {posts.length}</h3> */}
-                    
-                 <Nav className='mr-auto'>
+                <Nav className='mr-auto'>
                 <Button className='font-weight-bolder text-white' to='/news' as={Link}>
                            Private
                 </Button>
@@ -97,11 +76,9 @@ const News = () => {
                            public
                 </Button>
                 </Nav>
+                 {body}
 
-                 {body} 
-
-                  <AddNewsModal/>
-                {New !== null && <UpdateNewsMobal/>} 
+                
 
                  {/* after post is added, show toast */}
                 <Toast show={show} style={{position:'fixed', top:'20%', right: '10px'}} className={'bg-'+type+' text-white'} onClose ={setShowToast.bind(this,{show: false, message:'', type: null})}
@@ -120,4 +97,4 @@ const News = () => {
         </>
     )
 }
-export default News
+export default NewsAll
