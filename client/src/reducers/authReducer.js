@@ -12,13 +12,13 @@ export const authReducer = (state, action) => {
                 user
             }
 
-            // case EDIT_USER:
-            // return{
-            //         ...state,
-            //         authLoading: false,
-            //         isAuthenticated,
-            //         user
-            // }
+            case EDIT_USER:
+            return{
+                    ...state,
+                    authLoading: false,
+                    isAuthenticated,
+                    user
+            }
                 
 
 

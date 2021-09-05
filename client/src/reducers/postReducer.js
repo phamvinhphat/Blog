@@ -43,7 +43,7 @@ export const postReducer =(state, action) => {
         posts: state.posts.filter(post => post._id !== payload)
     }
 
-    //branch BITCH :>
+    
     case FIND_POST:  
     return {
       ...state,

@@ -4,10 +4,12 @@ POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-    "username": "Phatv2",
+    "username": "Phatss",
     "password": "Phat1234",
-    "email":"Pvphat12c6ntt@gmail.com",
-    "NumberPhone":"0937175474"
+    "email":"Pvphsat13@gmail.com",
+    "Address": null ,
+    "FullName": "Pham vinh Phat",
+    "NumberPhone": null     
 }
 
 ###
@@ -15,7 +17,7 @@ POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "Phatv",
+    "username": "Phatss",
     "password": "Phat1234"
 }
 

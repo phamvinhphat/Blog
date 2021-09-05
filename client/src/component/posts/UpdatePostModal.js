@@ -47,7 +47,6 @@ const UpdatePostModal = () =>{
     }
 
    
-    
     // close
     const closeDialog = () => {
         setUpdatedPost(post)

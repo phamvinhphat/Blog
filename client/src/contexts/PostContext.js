@@ -92,7 +92,6 @@ const PostContextProvider = ({children}) => {
        
         } catch (error) {
             return error.response.data ? error.response.data : {success: false, message: 'server error'}
-
         }
     }
 

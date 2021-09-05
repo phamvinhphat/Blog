@@ -15,7 +15,9 @@ const {registerUser} = useContext(AuthContext)
 const[registerForm, setRegisterForm] = useState({
     username: '',
     email:'',
-    NumberPhone:'',
+    Address: 'Address',
+    FullName:'',
+    NumberPhone: 'Number Phone',
     password: '',
     confirmPassword:''
 })
@@ -23,7 +25,7 @@ const[registerForm, setRegisterForm] = useState({
 const[alert, setAlert] = useState(null)
 
 
-const {username, email, NumberPhone, password, confirmPassword} = registerForm
+const {username, email, FullName, password, confirmPassword} = registerForm
 
 
 const onChangeRegisterForm = event => 
@@ -63,7 +65,7 @@ return(
            <Form.Group>
                <Form.Control 
                type='text' 
-               placeholder='Username' 
+               placeholder='Name account' 
                name='username' 
                required
                value={username}
@@ -72,7 +74,21 @@ return(
            </Form.Group>
            <br></br>     
             {/* email */}
+
            <Form.Group>
+               <Form.Control 
+                type='text' 
+                placeholder='Full Name'
+                name='FullName' 
+                required
+                value={FullName}
+                onChange={onChangeRegisterForm}
+                />
+           </Form.Group>
+
+           <br></br>     
+            {/* number phone */}
+            <Form.Group>
                <Form.Control 
                 type='email' 
                 placeholder='email'
@@ -82,18 +98,7 @@ return(
                 onChange={onChangeRegisterForm}
                 />
            </Form.Group>
-           <br></br>     
-            {/* number phone */}
-           <Form.Group>
-               <Form.Control 
-                type='text' 
-                placeholder='Number Phone'
-                name='NumberPhone' 
-                required
-                value={NumberPhone}
-                onChange={onChangeRegisterForm}
-                />
-           </Form.Group>
+           
            <br></br>     
              {/* password */}
            <Form.Group>

@@ -23,11 +23,14 @@ import {
 
 function User() {
 
-  const {authState: {user},updateUser}= useContext(AuthContext)
+  const {
+    authState: {user},
+    updateUser
+  } = useContext(AuthContext)
 
   const[updatedUser, setUpdatedUser] = useState(user)
 
-  const {username, email, NumberPhone} = updatedUser
+  const {username, email, NumberPhone,Address,FullName} = updatedUser
 
   const onChangeUpdatedUserForm = event => setUpdatedUser({...updatedUser, [event.target.name]: event.target.value})
    
@@ -40,9 +43,9 @@ function User() {
 
   return (
     <>
-      <Container fluid onSubmit={onSubmit}>
-        <Row>
-          <Col md="8">
+      <Container fluid>
+        <Row >
+          <Col md="8"  onSubmit={onSubmit}>
             <Card>
               <Card.Header>
                 <Card.Title as="h4">Edit Profile</Card.Title>
@@ -54,28 +57,31 @@ function User() {
                     <Col className="px-1" md="3">
                       <Form.Group>
                       <img src={userIcon} alt="userIcon" width='30' height='30' className='mr-2'/>
-                        <label>Username</label>
+                        <label>name Account</label>
                         <Form.Control
-                          Value={username}
-                          placeholder="Username"
+                          type='text'
+                          placeholder='name Account'
+                          name='username'
+                          required aria-describedby='username-help'
+                          value={username}
                           onChange={onChangeUpdatedUserForm}
-                          type="text"
                         ></Form.Control>
                       </Form.Group>
                     </Col>
 
                     <Col className="pl-1" md="4">
                       <Form.Group>
-                      <img src={emailIcon} alt="emailIcon" width='30' height='30' className='mr-2'/>
+                      <img src={nameIcon} alt="nameIcon" width='30' height='30' className='mr-2'/>
                         <label htmlFor="exampleInputEmail1">
-                          Email user
+                          Full Name
                         </label>
                         <Form.Control
-                          Value={email}
+                          type='text'
+                          placeholder='Full name'
+                          name='FullName'
+                          required aria-describedby='username-help'
+                          value={FullName}
                           onChange={onChangeUpdatedUserForm}
-                          placeholder="Email"
-                         
-                          type="email"
                         ></Form.Control>
                       </Form.Group>
                     </Col>     
@@ -83,14 +89,18 @@ function User() {
                   </Row>
 
                   <Row>
-                    <Col className="pr-1" md="6">
+                  <Col className="pr-1" md="6">
                       <Form.Group>
-                      <img src={nameIcon} alt="nameIcon" width='30' height='30' className='mr-2'/>
-                        <label>pass(BUG Don't data)</label>
+                      <img src={emailIcon} alt="emailIcon" width='30' height='30' className='mr-2'/>
+                    
+                        <label>Email</label>
                         <Form.Control
-                     
-                          placeholder="Email"
-                          type="text"
+                            type='text'
+                            placeholder='Email'
+                            name='email'
+                            required aria-describedby='username-help'
+                            value={email}
+                            onChange={onChangeUpdatedUserForm}
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -101,11 +111,12 @@ function User() {
                      
                         <label>Number Phone</label>
                         <Form.Control
-                           Value={NumberPhone}
-                           onChange={onChangeUpdatedUserForm}
-
-                          placeholder="Number Phone"
-                          type="text"
+                           type='text'
+                           placeholder="Number Phone"
+                           name='NumberPhone'
+                           required aria-describedby='username-help'                        
+                           value={NumberPhone}
+                           onChange={onChangeUpdatedUserForm} 
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -116,11 +127,14 @@ function User() {
                       <Form.Group>
                       <img src={addressIcon} alt="addressIcon" width='24' height='24' className='mr-2'/>
                    
-                        <label>Address (BUG Don't Data)</label>
+                        <label>Address</label>
                         <Form.Control
-                          
-                          placeholder="Home Address"
-                          type="text"
+                             type='text'
+                             placeholder="Address"
+                             name='Address'
+                             required aria-describedby='username-help'                        
+                             value={Address}
+                             onChange={onChangeUpdatedUserForm}
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -141,7 +155,7 @@ function User() {
             </Card>
           </Col>
         
-        {/* --------------------------------- */}
+          {/* --------------------------------- */}
           <Col md="4">
             <Card className="card-user">
               <div className="card-image">

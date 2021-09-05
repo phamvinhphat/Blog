@@ -84,24 +84,23 @@ const AuthContextProvider = ({children}) => {
     }
 
 
-    //BUG Update success nut don't in data : ((
     // edit user
-    // const updateUser = async updatedUser => {
-    //     try {
-    //         const response = await axios.put(apiUrl+'/auth/editUser/'+updatedUser._id, updatedUser)
-    //         if(response.data.success){
-    //             dispatch({type: EDIT_USER, payload: response.data.user})
-    //             await loadUser()
-    //             return response.data
-    //         }
-    //     } catch (error) {
-    //         return error.response.data ? error.response.data : {success: false, message: 'server error'}
-    //     }
-    // }
+    const updateUser = async updatedUser => {
+        try {
+            const response = await axios.put(apiUrl+'/auth/editUser/'+updatedUser._id, updatedUser)
+            if(response.data.success){
+                dispatch({type: EDIT_USER, payload: response.data.user})
+                await loadUser()
+                return response.data
+            }
+        } catch (error) {
+            return error.response.data ? error.response.data : {success: false, message: 'server error'}
+        }
+    }
 
 
     // context data
-    const authContextData = {loginUser, registerUser, logoutUser, authState,showUpdateUserModal, setShowUpdateUserModal}
+    const authContextData = {loginUser, registerUser, logoutUser, authState,showUpdateUserModal, setShowUpdateUserModal,updateUser}
     
     
     // Return provider

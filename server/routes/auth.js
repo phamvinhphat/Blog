@@ -24,10 +24,10 @@ router.get('/',verifyToken, async(req,res) => {
 //@desc Register user
 //@access Public
 router.post('/register', async(req,res) =>{
-    const {username, password, email, NumberPhone} = req.body
+    const {username, password, email, Address, FullName, NumberPhone} = req.body
         
         // simple validation
-        if(!username || !password || !email || !NumberPhone)
+        if(!username || !password || !email || !FullName)
         return res
         .status(400)
         .json({success: false, message: 'Missing email and/or password'})
@@ -43,16 +43,14 @@ router.post('/register', async(req,res) =>{
             return res.status(400).json({success: false, message: 'gmail already taken'})
 
             
-           // const phone = await User.findOne({NumberPhone})
-            // if(phone)
-            // return res.status(400).json({success: false, message: 'phone number ten'})
-
             const hashedPassword = await argon2.hash(password)
             const newUser = new User({
                 username,
                 password: hashedPassword,
                 email,
-                NumberPhone             
+                Address,
+                FullName,
+                NumberPhone         
             })
             await newUser.save()
 
@@ -69,20 +67,20 @@ router.post('/register', async(req,res) =>{
 //@access Private
 
 router.put('/editUser/:id',async(req,res) =>{
-    const {username, password, email, NumberPhone} = req.body
+    const {username, email, Address, FullName, NumberPhone} = req.body
 
     if(!username)
-    return res.status(400).json({success: false, message:'Missing title'})
+    return res.status(400).json({success: false, message:'Missing username'})
 
   
     if(!email)
-    return res.status(400).json({success: false, message:'Missing author'})
+    return res.status(400).json({success: false, message:'Missing email'})
 
-    if(!NumberPhone)
-    return res.status(400).json({success: false, message:'Missing url'})
+    if(!FullName)
+    return res.status(400).json({success: false, message:'Missing Full Name'})
   
 try{
-    let updatedUser = {username, email, NumberPhone}
+    let updatedUser = {username, email, NumberPhone, Address, FullName}
 
     const userUpdateCondition = {_id: req.params.id, user: req.userId}
 
@@ -99,7 +97,6 @@ try{
 }catch(error){
     res.status(400).json({error: err});
 }
-
 
 })
 
