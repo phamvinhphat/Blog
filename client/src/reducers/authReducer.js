@@ -15,9 +15,9 @@ export const authReducer = (state, action) => {
             case EDIT_USER:
             return{
                     ...state,
-                    authLoading: false,
+                    authLoading: true,
                     isAuthenticated,
-                    user
+                    user    
             }
                 
 

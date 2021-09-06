@@ -26,7 +26,7 @@ const  AllNews = ({news: {_id,title, content, author, url, attachment, likeCount
                 <Row>
                    
                     <Col>
-                         {moment(createAt).format('MMMM DD,YYYY')}
+                         {moment(createAt).format('HH:MM MMM DD,YYYY')}
                     </Col>
                 </Row> 
             

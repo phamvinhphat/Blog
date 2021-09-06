@@ -5,8 +5,9 @@ import  Badge  from "react-bootstrap/Badge";
 import  Button  from "react-bootstrap/Button";
 import LikeIcon from "../../assets/like.svg"
 import ActionButtons from './ActionButtons'
+import moment from 'moment';
 
-const  SinglePost = ({post:{_id, title, content, author, url, likeCount}}) => (
+const  SinglePost = ({post:{_id, title, content, author, url, likeCount,createAt}}) => (
     <Card className='shadow' border={'success'}>
         <Card.Body>
             <Card.Title>
@@ -18,14 +19,18 @@ const  SinglePost = ({post:{_id, title, content, author, url, likeCount}}) => (
                         <p className='post-title'>{author}</p>
                      
                     </Col>
-                    
-                  
-                   
-
-                 
 
                 </Row> 
              
+            </Card.Title>
+            <Card.Title>
+                <Row>
+                   
+                    <Col>
+                         {moment(createAt).format('HH:MM MMM DD,YYYY')}
+                    </Col>
+                </Row> 
+            
             </Card.Title>
             <Card.Text>{content}</Card.Text>
             <Card.Title>

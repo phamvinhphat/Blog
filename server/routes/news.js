@@ -100,7 +100,8 @@ router.put('/:id', verifyToken, async(req,res) => {
         content,
         author,
         url: (url.startsWith('https://') ? url : 'https://'+url) || '',
-        attachment
+        attachment,
+        likeCount
        } 
         
        const newsUpdateCondition ={_id: req.params.id, user: req.userId}
@@ -118,8 +119,8 @@ router.put('/:id', verifyToken, async(req,res) => {
 
 })
 
-//@rote News update apo.news
-//@desc update news
+//@rote News delete apo.news
+//@desc delete news
 //@access private
 router.delete('/:id',verifyToken, async(req,res) => {
     try{

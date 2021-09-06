@@ -77,18 +77,15 @@ const AddNewsModal = () =>{
                     
                 </From.Group>
 
-                <From.Group>
-                {/* <FileBase64
+        
+                <FileBase64
                     accept = "image/*"
                     multiple={false}
                     type='file'
                     value={attachment}
                     onDone = {({base64}) => setNewNews({...newNews, attachment: base64})}
-                /> */}
-                   <From.Text>attachment</From.Text>  
-                    <From.Control as='textarea' rows={3} placeholder='attachment' name='attachment' required aria-describedby='content-help' value={attachment} onChange={onChangeNewNewsForm} />
-                    
-                </From.Group>
+                />
+                
 
                 <From.Group>
                     <From.Text>Url git</From.Text> 

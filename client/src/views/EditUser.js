@@ -6,6 +6,9 @@ import nameIcon from '../assets/userName.svg'
 import phoneIcon from '../assets/phone.svg'
 import addressIcon from '../assets/address.svg'
 import { AuthContext } from "../contexts/AuthContext";
+import decorateIcon from "../assets/decorateIcon.svg"
+import decorateIcon2 from "../assets/decorateIcon2.svg"
+import decorateIcon3 from "../assets/decorateIcon3.svg"
 
 // react-bootstrap components
 import {
@@ -108,7 +111,6 @@ function User() {
                     <Col className="pl-1" md="6">
                       <Form.Group>
                       <img src={phoneIcon} alt="phoneIcon" width='24' height='24' className='mr-2'/>
-                     
                         <label>Number Phone</label>
                         <Form.Control
                            type='text'
@@ -182,34 +184,18 @@ function User() {
               </Card.Body>
               
               <hr></hr>
-              <div className="button-container mr-auto ml-auto">
-                <Button
-                  className="btn-simple btn-icon"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                  variant='primary' type='submit'
-                >
-                  <i className="fab fa-facebook-square"></i>
-                </Button>
+              <div className="button-container mr-auto ml-auto text-center">
+              
+                 
+                  <img src={decorateIcon} alt="decorateIcon" width='30' height='30' className='mr-2'/>
+                  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                  <img src={decorateIcon2} alt="decorateIcon" width='30' height='30' className='mr-2'/>
+                  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                  <img src={decorateIcon3} alt="decorateIcon" width='30' height='30' className='mr-2'/>
+              
 
-                <Button
-                  className="btn-simple btn-icon"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                
-                  variant='primary' type='submit'
-                >
-                  <i className="fab fa-twitter"></i>
-                </Button>
+             
 
-                <Button
-                  className="btn-simple btn-icon"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                  variant='primary' type='submit'
-                >
-                  <i className="fab fa-google-plus-square"></i>
-                </Button>
               </div>
             </Card>
           </Col>

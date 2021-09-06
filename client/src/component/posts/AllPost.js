@@ -8,8 +8,9 @@ import ActionButtons from './ActionButtons'
 import  OverlayTrigger from "react-bootstrap/OverlayTrigger"
 import  Tooltip from "react-bootstrap/Tooltip"
 import  githubIcon  from "../../assets/github.svg";
+import moment from 'moment';
 
-const  AllPost = ({post:{_id, title, content, author, url, likeCount, user} }) => (
+const  AllPost = ({post:{_id, title, content, author, url, likeCount, user,createAt} }) => (
     <Card className='shadow' border={'success'}>
         <Card.Body>
            
@@ -22,6 +23,15 @@ const  AllPost = ({post:{_id, title, content, author, url, likeCount, user} }) =
                 </Row> 
             
             </Card.Title> 
+            <Card.Title>
+                <Row>
+                   
+                    <Col>
+                         {moment(createAt).format('HH:MM MMM DD,YYYY')}
+                    </Col>
+                </Row> 
+            
+            </Card.Title>
            
             <Card.Title>
                 <Row>

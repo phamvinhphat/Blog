@@ -12,11 +12,21 @@ import  Col  from "react-bootstrap/Col";
 const ActionButtons = ({url,_id,likeCount}) => {
 
      const {
-        // newsState:{New},
+        newsState:{New},
         setShowUpdateNewsModal,
         deleteNews,
-        findNews
+        findNews,
+        updateNews
      } = useContext(NewsContext)
+
+     const[updatedNews, setUpdatedNews] = useState(New)
+
+     const onChangeLike = event => setUpdatedNews({...updatedNews, [event.target.likeCount]: event.target.value + 1})   
+
+     const onSubmit = async event => {
+        event.preventDefault()
+        const {success, message} = await updateNews(updatedNews)
+      }
 
      const chooseNews = newsId => {
         findNews(newsId)
@@ -45,6 +55,15 @@ const ActionButtons = ({url,_id,likeCount}) => {
                     <img src={deleteIcon} alt='Delete-news' width='30' height='30'/>
                 </Button>
             </OverlayTrigger>
+
+            <Col onSubmit={onSubmit}>
+                    <Button  variant='primary' type='submit'   onChange={onChangeLike}>
+                        <Col className='text-left'>
+                            <img src={LikeIcon} alt="LikeIcon" width='25' height='25' className='mr-2'/>
+                            <label >&nbsp;&nbsp;{likeCount}</label>
+                        </Col>
+                    </Button>                  
+            </Col> 
         </>
     )
 
