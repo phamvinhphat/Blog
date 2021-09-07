@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const authRouter = require('./routes/auth');
 const postRouter = require('./routes/post');
 const newsRouter = require('./routes/news');
+const bodyParser = require('body-parser');
 const cors = require('cors')
 
 const connectDB = async () =>{
@@ -24,6 +25,11 @@ const connectDB = async () =>{
 connectDB()
 
 const app = express()
+
+app.use(bodyParser.json({limit: '30mb'}));
+app.use(bodyParser.urlencoded({extended: true, limit: '30mb'}));
+app.use(cors());
+
 
 app.use(express.json())
 app.use(cors())

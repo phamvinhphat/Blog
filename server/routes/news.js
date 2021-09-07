@@ -37,8 +37,8 @@ router.post('/',verifyToken, async(req, res)=>{
     // if(!url)
     // return res.status(400).json({success: false, message:'Missing url'})
 
-    if(!attachment)
-    return res.status(400).json({success: false, message:'Missing attachment'})
+    // if(!attachment)
+    // return res.status(400).json({success: false, message:'Missing attachment'})
 
     try {
 

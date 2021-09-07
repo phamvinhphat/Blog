@@ -185,17 +185,13 @@ function User() {
               
               <hr></hr>
               <div className="button-container mr-auto ml-auto text-center">
-              
-                 
+                             
                   <img src={decorateIcon} alt="decorateIcon" width='30' height='30' className='mr-2'/>
                   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                   <img src={decorateIcon2} alt="decorateIcon" width='30' height='30' className='mr-2'/>
                   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                   <img src={decorateIcon3} alt="decorateIcon" width='30' height='30' className='mr-2'/>
               
-
-             
-
               </div>
             </Card>
           </Col>
